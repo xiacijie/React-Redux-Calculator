@@ -3,18 +3,19 @@
   
     height: 100%;
     width: 100%;
-    background-color: blue;
+    max-width: 33rem;
+    background-color: #f0f0f0;
 }
 
 
 .display{
     height: 25%;
     width : 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .buttonArea{
-    background-color: gray;
+   
     height: 75%;
 }
 
@@ -29,7 +30,8 @@
     display: flex;
     align-items: center;
    
-    background-color:white; 
+    background-color:white;
+    opacity: 0.8; 
     /* text-align: center; */
   
     /* line-height: 18.7%; */
@@ -39,6 +41,7 @@
 
 .button span{
     font-size: 2rem;
+    /* font-weight: bold; */
     display: inline-block;
     margin: 0 auto;
     /* position: absolute;
