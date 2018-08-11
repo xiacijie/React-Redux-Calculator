@@ -9,7 +9,7 @@ class NumberButton extends Component{
 
     render() {
         return (
-            <div className="numberButton button"></div>
+            <div className="numberButton button"><span>{this.props.value}</span></div>
         );
     }
     
