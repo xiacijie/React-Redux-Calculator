@@ -1,0 +1,13 @@
+.calculator {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+}
+
+
+.display{
+    height: 25%;
+    width : 100%;
+    background-color: aqua;
+}
