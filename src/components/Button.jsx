@@ -28,7 +28,7 @@ class NumberButton extends Component{
 
         if (this.state.hover){
             functionalButtonStyle.backgroundColor = "#0066ff";
-            functionalButtonStyle.border = "5px #3399ff solid"
+            functionalButtonStyle.border = "5px #99ccff solid"
             normalButtonStyle.backgroundColor = "#DBDBDB";
             normalButtonStyle.border ="5px #C2C2C2 solid"
         }
@@ -36,6 +36,8 @@ class NumberButton extends Component{
         const style = this.props.functional ? functionalButtonStyle : normalButtonStyle;
         return (
             <div 
+                onTouchStart={this.hover}
+                onTouchEnd={this.hover}
                 onMouseEnter={this.hover}
                 onMouseLeave={this.hover}
                 style={style}
