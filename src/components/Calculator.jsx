@@ -31,22 +31,67 @@ class Calculator extends Component {
                 {value: ".", handle: this.addDigit, functional:true},
                 {value: "=", handle: this.equal, functional: true}
             ],
-            show:100,
-            cache: []
+            stack: []
         }
      
     }
 
-    addDigit = () =>{
+    addDigit = (digit) =>{
+        const {stack}  = this.state;
+        const length = stack.length;
+        const newStack = stack.slice(0);
+        if (length == 0){
+            if (digit == 0){
+                return;
+            }
+            let buffer = "" + digit;
+            newStack.push(buffer);
+        }
+        else{
+            let buffer = newStack[length-1];
+            if (buffer == 0 && digit == "0"){
+                return;
+            }
+            buffer *= 10;
+            buffer += digit;
+            buffer += "";
+            newStack.push(buffer);
+        }
+        this.setState({stack:newStack});
 
     }
 
     negate = () =>{
-
+        const {stack} = this.state;
+        const length = stack.length;
+        const newStack = stack.slice(0);
+        if (length != 0){
+            const last = newStack[length -1];
+            
+            if (last != 0){
+               if (last[0] != "-"){
+                   newStack[length-1] = "-" + newStack[length-1];
+               }
+               else{
+                   newStack[length-1] = newStack[length-1].slice(1);
+               }
+               this.setState({stack:newStack});
+            }
+            
+        }
+       
     }
 
     toPercentage = () =>{
+        const {stack} = this.state;
+        const length = stack.length;
+        if (length != 0){
+            const newStack = stack.slice(0);
+            newStack[length-1] /= 100;
+            newStack[length - 1] += "";
+            this.setState({stack:newStack});
 
+        }
     }
 
     divide = () =>{
@@ -74,14 +119,17 @@ class Calculator extends Component {
     }
 
     clearAll = () =>{
-
+        this.setState({stack:[]});
     }
     
 
     render() {
+        const stack = this.state.stack;
+        const length = stack.length;
+        const show = length >0 ? stack[length-1]: "0";
         return (
         <div className="calculator">
-            <Display result={this.state.show}/>
+            <Display result={show}/>
             <ButtonArea buttons={this.state.buttons}/>
         </div>
         );

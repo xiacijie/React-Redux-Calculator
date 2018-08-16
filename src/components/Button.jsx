@@ -36,6 +36,7 @@ class NumberButton extends Component{
         const style = this.props.functional ? functionalButtonStyle : normalButtonStyle;
         return (
             <div 
+                onClick ={() => this.props.handle(this.props.value)}
                 onTouchStart={this.hover}
                 onTouchEnd={this.hover}
                 onMouseEnter={this.hover}
