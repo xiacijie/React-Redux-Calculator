@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Display from "./Display";
 import ButtonArea from "./ButtonArea";
-
+import Stack from "../structure/Stack";
 
 
 class Calculator extends Component {
@@ -31,67 +31,24 @@ class Calculator extends Component {
                 {value: ".", handle: this.addDigit, functional:true},
                 {value: "=", handle: this.equal, functional: true}
             ],
-            stack: []
+            stack: new Stack(),
+            operatorStack: new Stack(),
+            opertatorState: false
         }
      
     }
 
     addDigit = (digit) =>{
-        const {stack}  = this.state;
-        const length = stack.length;
-        const newStack = stack.slice(0);
-        if (length == 0){
-            if (digit == 0){
-                return;
-            }
-            let buffer = "" + digit;
-            newStack.push(buffer);
-        }
-        else{
-            let buffer = newStack[length-1];
-            if (buffer == 0 && digit == "0"){
-                return;
-            }
-            buffer *= 10;
-            buffer += digit;
-            buffer += "";
-            newStack.push(buffer);
-        }
-        this.setState({stack:newStack});
-
+        
     }
 
     negate = () =>{
-        const {stack} = this.state;
-        const length = stack.length;
-        const newStack = stack.slice(0);
-        if (length != 0){
-            const last = newStack[length -1];
-            
-            if (last != 0){
-               if (last[0] != "-"){
-                   newStack[length-1] = "-" + newStack[length-1];
-               }
-               else{
-                   newStack[length-1] = newStack[length-1].slice(1);
-               }
-               this.setState({stack:newStack});
-            }
-            
-        }
+
        
     }
 
     toPercentage = () =>{
-        const {stack} = this.state;
-        const length = stack.length;
-        if (length != 0){
-            const newStack = stack.slice(0);
-            newStack[length-1] /= 100;
-            newStack[length - 1] += "";
-            this.setState({stack:newStack});
-
-        }
+       
     }
 
     divide = () =>{
@@ -111,7 +68,7 @@ class Calculator extends Component {
     }
 
     equal = () =>{
-
+       
     }
 
     clearCurrent = () =>{

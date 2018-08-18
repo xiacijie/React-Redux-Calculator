@@ -14,18 +14,19 @@
     width : 100%;
     text-align: right;
     overflow: hidden;
+    
     /* display: flex;
     align-items: baseline; */
     /* background-color: aqua; */
 }
 
 .display span{
-    font-size: 4rem;
-
+    
+    font-size: 3.5rem;
     position: absolute;
     right: 1rem;
     bottom: 1rem;
-
+    margin-left: 2rem;
     display: inline-block;
 }
 
@@ -55,7 +56,7 @@
 }
 
 .button span{
-    font-size: 2.3rem;
+    font-size: 3rem;
     /* font-weight: bold; */
     display: inline-block;
     margin: 0 auto;
