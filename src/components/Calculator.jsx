@@ -38,6 +38,13 @@ class Calculator extends Component {
      
     }
 
+    componentDidMount = () =>{
+        const {stack} = this.state;
+        const newStack = Object.assign({},stack);
+        newStack.push(0);
+        this.setState({stack:newStack});
+    }
+
     addDigit = (digit) =>{
         
     }
@@ -83,7 +90,7 @@ class Calculator extends Component {
     render() {
         const stack = this.state.stack;
         const length = stack.length;
-        const show = length >0 ? stack[length-1]: "0";
+        const show = stack.peek();
         return (
         <div className="calculator">
             <Display result={show}/>
