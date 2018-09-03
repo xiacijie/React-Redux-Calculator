@@ -32,7 +32,7 @@ class Calculator extends Component {
                 {value: "=", handle: this.equal, functional: true}
             ],
             stack: [],
-            operatorStack: [],
+            operator: null,
             opertatorState: false
         }
      
@@ -43,9 +43,10 @@ class Calculator extends Component {
     operatorMode = true;
 
     getStack = () =>{
-        const {stack} = this.state;
+        const {stack,operator} = this.state;
         const length = stack.length;
-        return {stack,length};
+        
+        return {stack,length,operator};
     }
 
     componentDidMount = () =>{
@@ -124,7 +125,15 @@ class Calculator extends Component {
     }
 
     plus = () =>{
-
+        const {stack,length,operator} = this.getStack();
+        if (operator != null){
+            if (length == 1){
+                operator = "p";
+            }
+            else if (length == 2){
+                
+            }
+        }
     }
 
     minus = () =>{
