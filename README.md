@@ -2,6 +2,10 @@
 An web calculator built by react.js and redux
 ---------------------------------------------
 
+Try it
+-------
+[Online demo](https://xiacijie.github.io/react-calculator/)
+
 Requirements
 ------------
 ```
