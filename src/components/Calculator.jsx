@@ -13,7 +13,7 @@ class Calculator extends Component {
                 {value: "AC", handle: this.clearAll, functional:true,},
                 {value: "C", handle: this.clearCurrent, functional: true},
                 {value: "%", handle: this.toPercentage, functional: true},
-                {value: "➗", handle: this.clearAll, functional: true},
+                {value: "➗", handle: this.divide, functional: true},
                 {value: "7", handle: this.addDigit},
                 {value: "8", handle: this.addDigit},
                 {value: "9", handle: this.addDigit},
@@ -63,6 +63,8 @@ class Calculator extends Component {
         
         if (this.operatorMode){
             newStack.push("");
+            this.operatorMode = false;
+            this.resultMode = false;
         }
         let lastNum = newStack[newStack.length - 1]; // last number in the stack
         if (this.resultMode){
@@ -145,6 +147,7 @@ class Calculator extends Component {
         if (length == 1){
             operator = op;
             this.operatorMode = true;
+            this.resultMode = false;
         }
         else if (length == 2){
             this.equal();
@@ -162,8 +165,8 @@ class Calculator extends Component {
            return;
        }
        const newStack = stack.slice(0);
-       const op1 = newStack.pop();
        const op2 = newStack.pop();
+       const op1 = newStack.pop();
        let result;
        if (operator == "plus"){
            result = Number(op1) + Number(op2);
@@ -179,11 +182,20 @@ class Calculator extends Component {
            result = Number(op1) / Number(op2);
        }
        newStack.push(result);
+       this.resultMode = true;
+       this.operatorMode = false;
        this.setState({stack: newStack});
     }
 
     clearCurrent = () =>{
+        const {stack,length} = this.getStack();
+        const newStack = stack.slice(0);
+        if (length > 0){
+            newStack.pop();
+            newStack.push(0);
+        }
 
+        this.setState({stack:newStack});
     }
 
     clearAll = () =>{
