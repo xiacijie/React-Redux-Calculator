@@ -40,7 +40,7 @@ class Calculator extends Component {
 
     // Display result, any input will overwrite the current display
     resultMode = true;
-    operatorMode = true;
+    operatorMode = false;
 
     getStack = () =>{
         const {stack,operator} = this.state;
@@ -58,7 +58,13 @@ class Calculator extends Component {
 
     addDigit = (digit) =>{
         const {stack,length} = this.getStack();
-        let lastNum = stack[length - 1]; // last number in the stack
+        
+        const newStack = stack.slice(0);
+        
+        if (this.operatorMode){
+            newStack.push("");
+        }
+        let lastNum = newStack[newStack.length - 1]; // last number in the stack
         if (this.resultMode){
             lastNum = "";
             this.resultMode = false;
@@ -79,8 +85,8 @@ class Calculator extends Component {
 
         lastNum += String(digit);
 
-        const newStack = stack.slice(0);
-        newStack[length - 1] = lastNum;
+        
+        newStack[newStack.length - 1] = lastNum;
         this.setState({stack: newStack});
 
     }
@@ -117,31 +123,63 @@ class Calculator extends Component {
     }
 
     divide = () =>{
-
+        this.setOperator("divide");
     }
 
     multiply = () =>{
-
+        this.setOperator("multiply");
     }
 
     plus = () =>{
-        const {stack,length,operator} = this.getStack();
-        if (operator != null){
-            if (length == 1){
-                operator = "p";
-            }
-            else if (length == 2){
-                
-            }
-        }
+       this.setOperator("plus"); 
     }
 
     minus = () =>{
+        this.setOperator("minus");
+    }
 
+    setOperator = (op) =>{
+        const {stack,length} = this.getStack();
+        let {operator} = this.getStack();
+        
+        if (length == 1){
+            operator = op;
+            this.operatorMode = true;
+        }
+        else if (length == 2){
+            this.equal();
+            operator = op;
+            this.resultMode = false;
+            this.operatorMode = true;
+        }
+
+        this.setState({operator});
     }
 
     equal = () =>{
-       
+       const {stack,operator,length} = this.getStack();
+       if (length == 1){
+           return;
+       }
+       const newStack = stack.slice(0);
+       const op1 = newStack.pop();
+       const op2 = newStack.pop();
+       let result;
+       if (operator == "plus"){
+           result = Number(op1) + Number(op2);
+       }
+       else if (operator == "minus"){
+           result = Number(op1) - Number(op2);
+       }
+       else if (operator == "multiply"){
+           result = Number(op1) * Number(op2);
+
+       }
+       else{
+           result = Number(op1) / Number(op2);
+       }
+       newStack.push(result);
+       this.setState({stack: newStack});
     }
 
     clearCurrent = () =>{
