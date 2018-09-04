@@ -20,6 +20,6 @@ How to start
 Screenshots
 -----------
 
-![alt text](./resource/demo1.png)
+
 ![alt text](./resource/demo2.jpg)
 
