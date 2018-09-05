@@ -1,0 +1,11 @@
+export const ADDDIGIT = "ADDDIGIT";
+export const NEGATE = "NEGATE";
+export const TOPERCENTAGE = "TOPERCENTAGE";
+export const DIVIDE = "DIVIDE";
+export const MULTIPLY = "MULTIPLY";
+export const PLUS = "PLUS";
+export const MINUS = "MINUS";
+export const SETOPERATOR = "SETOPERATOR";
+export const EQUAL = "EQUAL";
+export const CLEARCURRENT = "CLEARCURRENT";
+export const CLEARALL = "CLEARALL";

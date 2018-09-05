@@ -33,7 +33,7 @@ class Calculator extends Component {
             ],
             stack: [],
             operator: null,
-            opertatorState: false
+            
         }
      
     }
