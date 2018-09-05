@@ -1,5 +1,5 @@
 # react-calculator
-An web calculator built by react.js and redux
+An web calculator built by React.js and Redux
 ---------------------------------------------
 
 Try it
