@@ -8,10 +8,11 @@ class ButtonArea extends Component{
 
 
     render(){
+        const that = this;
         return (<div className="buttonArea">
             {this.props.buttons.map(function(val){
                 return (<Button 
-                    handle={val.handle}
+                    handle={that.props.p[val.handle]}
                     functional={val.functional}
                     key = {val.value}
                     value={val.value}/>);

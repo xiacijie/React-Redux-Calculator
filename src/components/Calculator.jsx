@@ -3,38 +3,13 @@ import Display from "./Display";
 import ButtonArea from "./ButtonArea";
 import {connect} from "react-redux";
 import * as actionTypes from "../actions/action";
+import {buttons} from "../config/buttonConfig";
 
 class Calculator extends Component {
     
     constructor(props){
         super(props);
-        this.state = {
-            buttons:[
-                {value: "AC", handle: this.props.initialize, functional:true,},
-                {value: "C", handle: this.props.clearCurrent, functional: true},
-                {value: "%", handle: this.props.toPercentage, functional: true},
-                {value: "➗", handle: this.props.divide, functional: true},
-                {value: "7", handle: this.props.addDigit},
-                {value: "8", handle: this.props.addDigit},
-                {value: "9", handle: this.props.addDigit},
-                {value: "✖", handle: this.props.multiply, functional: true},
-                {value: "4", handle: this.props.addDigit},
-                {value: "5", handle: this.props.addDigit},
-                {value: "6", handle: this.props.addDigit},
-                {value: "-", handle: this.props.minus, functional: true},
-                {value: "1", handle: this.props.addDigit},
-                {value: "2", handle: this.props.addDigit},
-                {value: "3", handle: this.props.addDigit},
-                {value: "+", handle: this.props.plus, functional: true},
-                {value: "+/-", handle: this.props.negate, functional: true},
-                {value: "0", handle: this.props.addDigit},
-                {value: ".", handle: this.props.addDigit, functional:true},
-                {value: "=", handle: this.props.equal, functional: true}
-            ],
-            stack: [],
-            operator: null,
-            
-        }
+        this.state = {}
      
     }
 
@@ -48,7 +23,7 @@ class Calculator extends Component {
         return (
         <div className="calculator">
             <Display result={this.props.show}/>
-            <ButtonArea buttons={this.state.buttons}/>
+            <ButtonArea p={this.props} buttons={buttons}/>
         </div>
         );
     }
