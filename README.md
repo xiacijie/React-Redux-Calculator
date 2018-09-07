@@ -1,10 +1,10 @@
-# react-calculator
+# React-Calculator
 An web calculator built by React.js and Redux
 ---------------------------------------------
 
 Try it
 -------
-[Online demo](https://xiacijie.github.io/react-calculator/)
+[Online demo](https://xiacijie.github.io/React-Calculator/)
 
 Requirements
 ------------
