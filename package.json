@@ -1,7 +1,7 @@
 {
   "name": "react-calculator",
   "version": "0.1.0",
-  "homepage": "https://xiacijie.github.io/react-calculator",
+  "homepage": "https://xiacijie.github.io/React-Calculator",
   "private": true,
   "dependencies": {
     "react": "^16.4.2",
