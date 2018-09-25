@@ -107,7 +107,7 @@ const toPercentage = (state) =>{
     const {stack, length} = getStack(state);
     let lastNum = stack[length-1];
     if (lastNum == "0"){
-        return;
+        return newState;
     }
 
     lastNum = String(lastNum / 100);
