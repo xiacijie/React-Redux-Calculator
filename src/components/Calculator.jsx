@@ -31,7 +31,7 @@ class Calculator extends Component {
 }
 
 const mapStateToProps = state =>{
-    console.log(state);
+
     const {stack} = state;
     const length = stack.length;
     const show = stack[length-1];

@@ -19,18 +19,20 @@ const getStack = (state) =>{
 
 // Dispatch functions
 const setOperator = (op, state) =>{
-    const newState = Object.assign({},state);
+    let newState = Object.assign({},state);
     const {stack,length} = getStack(newState);
     let {operator} = getStack(newState);
     
     if (length == 1){
+        console.log("it is 1",newState.stack,newState.operator);
         newState.operator = op;
         newState.operatorMode = true;
         newState.resultMode = false;
     }
     else if (length == 2){
-        equal(state);
-        operator = op;
+        console.log("it is 2",newState.stack,newState.operator);
+        newState = equal(newState);
+        newState.operator = op;
         newState.resultMode = false;
         newState.operatorMode = true;
     }
@@ -119,6 +121,7 @@ const toPercentage = (state) =>{
  }
 
  const equal = (state) =>{
+     console.log("equal");
     const newState = Object.assign({},state);
     const {stack,operator,length} = getStack(state);
     if (length == 1){
@@ -141,10 +144,11 @@ const toPercentage = (state) =>{
     else{
         result = Number(op1) / Number(op2);
     }
-    newStack.push(result);
+    newStack.push(String(result));
     newState.resultMode = true;
     newState.operatorMode = false;
     newState.stack = newStack;
+    console.log(newState);
     return newState;
 
  }
