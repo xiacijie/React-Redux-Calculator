@@ -1,4 +1,3 @@
-[![HitCount](http://hits.dwyl.io/xiacijie/React-Calculator.svg)](http://hits.dwyl.io/xiacijie/React-Calculator)
 # React-Calculator
 A web calculator built by React.js and Redux
 ---------------------------------------------
